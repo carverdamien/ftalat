@@ -57,31 +57,6 @@ char openFreqSetterFiles()
    return 0;
 }
 
-inline void setFreq(unsigned int coreID, unsigned int targetFreq)
-{
-   assert(coreID < getCoreNumber());
-   
-   fprintf(pSetFiles[coreID],"%d",targetFreq);
-   fflush(pSetFiles[coreID]);
-}
-
-inline void setAllFreq(unsigned int targetFreq)
-{
-   int nbCore = getCoreNumber();
-   int i;
-   
-   for (i = 0; i < nbCore ; i++ )
-   {
-      fprintf(pSetFiles[i],"%d",targetFreq);
-      fflush(pSetFiles[i]);
-   }
-}
-
-inline void setMinFreqForAll()
-{
-   setAllFreq(getMinAvailableFreq(0));
-   waitCurFreq(0,getMinAvailableFreq(0));
-}
 
 
 void closeFreqSetterFiles(void) 

@@ -141,32 +141,12 @@ unsigned int getCurFreq(unsigned int coreID)
    FILE* pFreqFile = openCPUFreqFile(coreID,"cpuinfo_cur_freq","r");
    if ( pFreqFile != NULL )
    {
-      fscanf(pFreqFile,"%u",&freq);
+	   assert(fscanf(pFreqFile,"%u",&freq)==1);
       
       fclose(pFreqFile);
    }
    
    return freq;
-}
-
-inline void waitCurFreq(unsigned int coreID, unsigned int targetFreq)
-{
-   assert(coreID < getCoreNumber());
-   
-   unsigned int freq = 0;
-   char filePathBuffer[BUFFER_PATH_SIZE]= {'\0'};
-   snprintf(filePathBuffer,BUFFER_PATH_SIZE,CPU_PATH_FORMAT,coreID,"cpuinfo_cur_freq");
-   
-   do
-   {
-      FILE* pFreqFile = fopen(filePathBuffer,"r");
-      if ( pFreqFile != NULL )
-      {
-         fscanf(pFreqFile,"%u",&freq);
-         
-         fclose(pFreqFile);
-      }
-   }while(freq != targetFreq);
 }
 
 unsigned int getMinAvailableFreq(unsigned int coreID)

@@ -19,6 +19,10 @@
 #ifndef FREQGETTER_H
 #define FREQGETTER_H
 
+#include <assert.h>
+#include "utils.h"
+#include <stdio.h>
+
 /**
  * Get the number of online cores
  * \return
@@ -46,7 +50,25 @@ unsigned int getCurFreq(unsigned int coreID);
  * \param coreID core identifier 
  * \param targetFreq
  */
-inline void waitCurFreq(unsigned int coreID, unsigned int targetFreq);
+inline void waitCurFreq(unsigned int coreID, unsigned int targetFreq)
+{
+   assert(coreID < getCoreNumber());
+   
+   unsigned int freq = 0;
+   char filePathBuffer[BUFFER_PATH_SIZE]= {'\0'};
+   snprintf(filePathBuffer,BUFFER_PATH_SIZE,CPU_PATH_FORMAT,coreID,"cpuinfo_cur_freq");
+   
+   do
+   {
+      FILE* pFreqFile = fopen(filePathBuffer,"r");
+      if ( pFreqFile != NULL )
+      {
+	      assert(fscanf(pFreqFile,"%u",&freq)==1);
+         
+         fclose(pFreqFile);
+      }
+   }while(freq != targetFreq);
+}
 
 /**
  * Get the minimum frequency available for the core identified by \a coreID

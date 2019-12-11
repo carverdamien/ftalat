@@ -21,11 +21,164 @@
 
 #include "rdtsc.h"
 
+#define asmLoop()\
+{\
+   asm volatile(\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      "addl $1,%%eax;\n\t"\
+      :\
+      :\
+      :"%eax"\
+   );\
+}
+
+
 /**
  * Kernel of 128 add in ASM
  * The kernel time execution is measured with \a sync_rdtsc1 and \a sync_rdtsc2
  * \return the number of cycles to execute the kernel
  */
-__inline__ unsigned long loop();
+__inline__ unsigned long loop()
+{
+   unsigned long long startTime = 0;
+   unsigned long long endTime = 0;
+   unsigned int i = 0;
+   
+   //sync_rdtscll(startTime);
+   sync_rdtsc1(startTime);
+
+   for ( i = 0 ; i < 8; i++ )
+      asmLoop();
+   sync_rdtsc2(endTime);
+   //sync_rdtscll(endTime);
+   
+   return (unsigned long) (endTime - startTime);
+}
 
 #endif
